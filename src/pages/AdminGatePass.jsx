@@ -8,6 +8,8 @@ function AdminGatePass(){
 const [passes,setPasses] = useState([])
 const navigate = useNavigate()
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 // 🔔 notification sound
 const playSound = () => {
   const audio = new Audio("https://www.soundjay.com/buttons/sounds/button-3.mp3")
@@ -15,7 +17,7 @@ const playSound = () => {
 }
 
 const loadPasses = async()=>{
-const res = await axios.get("http://localhost:5000/gatepass/all")
+const res = await axios.get(`${BASE_URL}/gatepass/all`)
 
 // latest first
 const sorted = res.data.reverse()
@@ -41,13 +43,13 @@ return ()=>clearInterval(interval)
 
 // APPROVE
 const approve = async(id)=>{
-await axios.put(`http://localhost:5000/gatepass/approve/${id}`)
+await axios.put(`${BASE_URL}/gatepass/approve/${id}`)
 loadPasses()
 }
 
 // ❌ REJECT
 const reject = async(id)=>{
-await axios.put(`http://localhost:5000/gatepass/reject/${id}`)
+await axios.put(`${BASE_URL}/gatepass/reject/${id}`)
 loadPasses()
 }
 
@@ -112,8 +114,6 @@ onClick={()=>approve(p._id)}
 >
 Approve
 </button>
-
-
 
 <button
 className="historyBtn"

@@ -5,12 +5,14 @@ function ApprovedGatePass(){
 
 const [pass,setPass] = useState(null)
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 useEffect(()=>{
 
 const id = localStorage.getItem("studentId")
 
 axios
-.get(`http://localhost:5000/gatepass/approved/${id}`)
+.get(`${BASE_URL}/gatepass/approved/${id}`)
 .then(res=>setPass(res.data))
 
 },[])
