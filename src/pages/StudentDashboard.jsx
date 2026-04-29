@@ -8,13 +8,16 @@ function StudentDashboard(){
 const navigate = useNavigate()
 const [student,setStudent] = useState(null)
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 useEffect(()=>{
 
 const id = localStorage.getItem("studentId")
 
 axios
-.get(`http://localhost:5000/students/profile/${id}`)
+.get(`${BASE_URL}/students/profile/${id}`)
 .then(res=>setStudent(res.data))
+.catch(err => console.log("Error loading profile"))
 
 },[])
 
@@ -52,7 +55,7 @@ return(
 <div className="profileTop">
 
 <img
-src={`http://localhost:5000/uploads/${student.photo}`}
+src={`${BASE_URL}/uploads/${student.photo}`}
 alt="student"
 />
 

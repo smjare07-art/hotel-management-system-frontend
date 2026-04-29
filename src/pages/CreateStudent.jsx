@@ -7,6 +7,8 @@ function CreateStudent(){
 
 const [form,setForm] = useState({})
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 const handleChange = (e)=>{
 setForm({...form,[e.target.name]:e.target.value})
 }
@@ -44,7 +46,7 @@ for(let key in form){
 data.append(key,form[key])
 }
 
-await axios.post("http://localhost:5000/students/create",data)
+await axios.post(`${BASE_URL}/students/create`,data)
 
 Swal.fire({
   title: "Success 🎉",
