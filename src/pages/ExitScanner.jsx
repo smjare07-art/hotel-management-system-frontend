@@ -4,6 +4,8 @@ import axios from "axios"
 
 function ExitScanner(){
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 useEffect(()=>{
 
 const scanner = new Html5QrcodeScanner(
@@ -22,7 +24,7 @@ async(decodedText)=>{
 try{
 
 const res = await axios.post(
-"http://localhost:5000/gatepass/scan",
+`${BASE_URL}/gatepass/scan`,
 {
 gatepassId:decodedText,
 type:"exit"
@@ -30,6 +32,9 @@ type:"exit"
 )
 
 alert(res.data.message)
+
+// ✅ scan झाल्यावर stop कर
+scanner.clear()
 
 }catch(err){
 
@@ -42,6 +47,11 @@ alert("Invalid Gate Pass")
 (error)=>{}
 
 )
+
+// ✅ cleanup (important)
+return () => {
+  scanner.clear().catch(()=>{})
+}
 
 },[])
 

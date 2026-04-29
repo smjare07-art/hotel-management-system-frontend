@@ -5,21 +5,26 @@ function CreateMess(){
 
 const [form,setForm] = useState({})
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 const handleChange=(e)=>{
-
 setForm({...form,[e.target.name]:e.target.value})
-
 }
 
 const submit=async()=>{
+try{
 
 await axios.post(
-"http://localhost:5000/mess/create",
+`${BASE_URL}/mess/create`,
 form
 )
 
 alert("Mess Admin Added")
 
+}catch(err){
+console.log(err)
+alert("Error creating mess admin")
+}
 }
 
 return(
@@ -39,9 +44,7 @@ return(
 <input name="messName" placeholder="Mess Name" onChange={handleChange}/>
 
 <button onClick={submit}>
-
 Create Mess
-
 </button>
 
 </div>

@@ -7,6 +7,8 @@ const [message,setMessage] = useState("")
 const [rating,setRating] = useState(5)
 const [image,setImage] = useState(null)
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 const submitFeedback = async(e)=>{
 
 e.preventDefault()
@@ -25,11 +27,10 @@ if(image){
 formData.append("image",image)
 }
 
-await axios.post("http://localhost:5000/feedback/add",formData,{
-headers:{
-"Content-Type":"multipart/form-data"
-}
-})
+await axios.post(
+`${BASE_URL}/feedback/add`,
+formData
+)
 
 alert("Feedback Submitted Successfully")
 
@@ -81,13 +82,11 @@ onChange={(e)=>setImage(e.target.files[0])}
 value={rating}
 onChange={(e)=>setRating(e.target.value)}
 >
-
 <option value="5">⭐⭐⭐⭐⭐</option>
 <option value="4">⭐⭐⭐⭐</option>
 <option value="3">⭐⭐⭐</option>
 <option value="2">⭐⭐</option>
 <option value="1">⭐</option>
-
 </select>
 
 <br/><br/>

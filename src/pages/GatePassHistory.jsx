@@ -8,13 +8,20 @@ const {id} = useParams()
 
 const [passes,setPasses] = useState([])
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 useEffect(()=>{
 
 axios
-.get(`http://localhost:5000/gatepass/student/${id}`)
+.get(`${BASE_URL}/gatepass/student/${id}`)
 .then(res=>setPasses(res.data))
+.catch(err => console.log("Error fetching history"))
 
 },[id])
+
+if(passes.length === 0){
+return <h3>No Gate Pass History</h3>
+}
 
 return(
 
@@ -24,15 +31,16 @@ return(
 
 <table border="1">
 
+<thead>
 <tr>
-
 <th>Reason</th>
 <th>Location</th>
 <th>Date</th>
 <th>Status</th>
-
 </tr>
+</thead>
 
+<tbody>
 {passes.map(p=>(
 <tr key={p._id}>
 
@@ -43,6 +51,7 @@ return(
 
 </tr>
 ))}
+</tbody>
 
 </table>
 

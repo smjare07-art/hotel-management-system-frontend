@@ -5,15 +5,22 @@ function PaymentHistory(){
 
 const [payments,setPayments] = useState([])
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 useEffect(()=>{
 
 const id = localStorage.getItem("studentId")
 
 axios
-.get(`http://localhost:5000/payment/history/${id}`)
+.get(`${BASE_URL}/payment/history/${id}`)
 .then(res=>setPayments(res.data))
+.catch(err => console.log("Error loading payments"))
 
 },[])
+
+if(payments.length === 0){
+return <h3>No Payment History</h3>
+}
 
 return(
 
@@ -46,13 +53,11 @@ return(
 <td>
 
 <a
-href={`http://localhost:5000/payment/receipt/${p._id}`}
+href={`${BASE_URL}/payment/receipt/${p._id}`}
 target="_blank"
 rel="noreferrer"
 >
-
 Download
-
 </a>
 
 </td>

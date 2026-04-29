@@ -8,14 +8,16 @@ const [students,setStudents] = useState([])
 const [requests,setRequests] = useState([])
 const [studentName,setStudentName] = useState("")
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 useEffect(()=>{
 
 const id = localStorage.getItem("messId")
 
 axios
-.get(`http://localhost:5000/mess/${id}`)
+.get(`${BASE_URL}/mess/${id}`)
 .then(res=>setMess(res.data))
-.catch(err=>console.log(err))
+.catch(err=>console.log("Error loading mess"))
 
 loadStudents()
 loadRequests()
@@ -25,50 +27,45 @@ loadRequests()
 // -------- LOAD STUDENTS --------
 
 const loadStudents = async()=>{
-
 try{
 
 const messId = localStorage.getItem("messId")
 
 const res = await axios.get(
-`http://localhost:5000/mess/dashboard/${messId}`
+`${BASE_URL}/mess/dashboard/${messId}`
 )
 
 setStudents(res.data)
 
 }catch(err){
-console.log(err)
+console.log("Error loading students")
 }
-
 }
 
 // -------- LOAD REQUESTS --------
 
 const loadRequests = async()=>{
-
 try{
 
 const messId = localStorage.getItem("messId")
 
 const res = await axios.get(
-`http://localhost:5000/mess/requests/${messId}`
+`${BASE_URL}/mess/requests/${messId}`
 )
 
 setRequests(res.data)
 
 }catch(err){
-console.log(err)
+console.log("Error loading requests")
 }
-
 }
 
 // -------- ACCEPT REQUEST --------
 
 const acceptRequest = async(id)=>{
-
 try{
 
-await axios.put(`http://localhost:5000/students/mess-accept/${id}`)
+await axios.put(`${BASE_URL}/students/mess-accept/${id}`)
 
 alert("Student Joined Mess")
 
@@ -76,25 +73,21 @@ loadStudents()
 loadRequests()
 
 }catch(err){
-console.log(err)
+console.log("Accept failed")
 }
-
 }
 
 // -------- REJECT REQUEST --------
 
 const rejectRequest = async(id)=>{
-
 try{
 
-await axios.put(`http://localhost:5000/students/mess-reject/${id}`)
-
+await axios.put(`${BASE_URL}/students/mess-reject/${id}`)
 loadRequests()
 
 }catch(err){
-console.log(err)
+console.log("Reject failed")
 }
-
 }
 
 // -------- SEND REQUEST --------
@@ -109,7 +102,7 @@ return
 try{
 
 await axios.post(
-"http://localhost:5000/mess/send-request",
+`${BASE_URL}/mess/send-request`,
 {
 name:studentName,
 messId:localStorage.getItem("messId")
@@ -119,32 +112,25 @@ messId:localStorage.getItem("messId")
 alert("Mess Request Sent")
 
 setStudentName("")
-
 loadRequests()
 
 }catch(err){
-
-console.log(err)
+console.log("Request failed")
 alert("Error sending request")
-
 }
-
 }
 
 // -------- DELETE STUDENT --------
 
 const deleteStudent = async(id)=>{
-
 try{
 
-await axios.delete(`http://localhost:5000/mess/student/${id}`)
-
+await axios.delete(`${BASE_URL}/mess/student/${id}`)
 loadStudents()
 
 }catch(err){
-console.log(err)
+console.log("Delete failed")
 }
-
 }
 
 // -------- TOTAL COLLECTION --------
@@ -167,7 +153,6 @@ return(
 <h2>{mess.messName}</h2>
 
 <p>Mess Admin: {mess.name}</p>
-
 <p>Phone: {mess.phone}</p>
 
 <hr/>
@@ -183,10 +168,12 @@ return(
 <p><b>Student:</b> {r.studentName}</p>
 
 <button onClick={()=>acceptRequest(r._id)} style={{marginRight:"10px"}}>
-Accept </button>
+Accept
+</button>
 
 <button onClick={()=>rejectRequest(r._id)}>
-Reject </button>
+Reject
+</button>
 
 </div>
 
@@ -203,7 +190,8 @@ onChange={(e)=>setStudentName(e.target.value)}
 />
 
 <button onClick={addStudent} style={{marginLeft:"10px"}}>
-Send Request </button>
+Send Request
+</button>
 
 <hr/>
 

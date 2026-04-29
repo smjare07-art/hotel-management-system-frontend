@@ -8,10 +8,12 @@ const [mess,setMess] = useState([])
 
 const [showModal,setShowModal] = useState(false)
 const [editData,setEditData] = useState(null)
-const [type,setType] = useState("") // security / mess
+const [type,setType] = useState("")
 
 const [confirmBox,setConfirmBox] = useState(false)
 const [deleteId,setDeleteId] = useState(null)
+
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
 
 // Load data
 useEffect(()=>{
@@ -20,13 +22,21 @@ loadMess()
 },[])
 
 const loadSecurity = async()=>{
-const res = await axios.get("http://localhost:5000/security/all")
+try{
+const res = await axios.get(`${BASE_URL}/security/all`)
 setGuards(res.data)
+}catch(err){
+console.log("Error loading security")
+}
 }
 
 const loadMess = async()=>{
-const res = await axios.get("http://localhost:5000/mess/all")
+try{
+const res = await axios.get(`${BASE_URL}/mess/all`)
 setMess(res.data)
+}catch(err){
+console.log("Error loading mess")
+}
 }
 
 // ------------------ EDIT ------------------
@@ -41,17 +51,17 @@ const handleUpdate = async()=>{
 try{
 
 if(type === "security"){
-await axios.put(`http://localhost:5000/security/${editData._id}`,editData)
+await axios.put(`${BASE_URL}/security/${editData._id}`,editData)
 loadSecurity()
 }else{
-await axios.put(`http://localhost:5000/mess/${editData._id}`,editData)
+await axios.put(`${BASE_URL}/mess/${editData._id}`,editData)
 loadMess()
 }
 
 setShowModal(false)
 
 }catch(err){
-console.log(err)
+console.log("Update failed")
 }
 }
 
@@ -64,15 +74,22 @@ setConfirmBox(true)
 
 const confirmDelete = async()=>{
 
+try{
+
 if(deleteId.t === "security"){
-await axios.delete(`http://localhost:5000/security/${deleteId.id}`)
+await axios.delete(`${BASE_URL}/security/${deleteId.id}`)
 loadSecurity()
 }else{
-await axios.delete(`http://localhost:5000/mess/${deleteId.id}`)
+await axios.delete(`${BASE_URL}/mess/${deleteId.id}`)
 loadMess()
 }
 
 setConfirmBox(false)
+
+}catch(err){
+console.log("Delete failed")
+}
+
 }
 
 // ------------------ UI ------------------

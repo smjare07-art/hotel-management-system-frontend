@@ -6,9 +6,15 @@ function ViewFeedback(){
 
 const [feedbacks,setFeedbacks] = useState([])
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 useEffect(()=>{
-axios.get("http://localhost:5000/feedback/all")
+
+axios
+.get(`${BASE_URL}/feedback/all`)
 .then(res=>setFeedbacks(res.data))
+.catch(err => console.log("Error loading feedback"))
+
 },[])
 
 return(
@@ -37,7 +43,7 @@ return(
 
 {f.image && (
 <img
-src={`http://localhost:5000/uploads/${f.image}`}
+src={`${BASE_URL}/uploads/${f.image}`}
 alt="feedback"
 className="feedback-img"
 />

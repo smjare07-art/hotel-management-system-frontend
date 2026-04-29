@@ -7,13 +7,16 @@ function FeePayment(){
 
 const [student,setStudent] = useState(null)
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 useEffect(()=>{
 
 const id = localStorage.getItem("studentId")
 
 axios
-.get(`http://localhost:5000/students/profile/${id}`)
+.get(`${BASE_URL}/students/profile/${id}`)
 .then(res=>setStudent(res.data))
+.catch(err => console.log("Error loading student"))
 
 },[])
 
@@ -22,12 +25,12 @@ const payFee = async ()=>{
 try{
 
 const res = await axios.post(
-"http://localhost:5000/payment/create-order"
+`${BASE_URL}/payment/create-order`
 )
 
 const options = {
 
-key:"rzp_test_SGtadFAcSDWJxt",
+key:"rzp_test_SGtadFAcSDWJxt", // ⚠️ production मध्ये live key वापर
 amount:res.data.amount,
 currency:"INR",
 name:"Hostel Fee Payment",
@@ -37,7 +40,7 @@ order_id:res.data.id,
 handler: async function(){
 
 await axios.post(
-"http://localhost:5000/payment/success",
+`${BASE_URL}/payment/success`,
 {
 studentId:student._id,
 amount:12500

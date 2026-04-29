@@ -5,13 +5,16 @@ function EntryHistory(){
 
 const [logs,setLogs] = useState([])
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 useEffect(()=>{
 
 const id = localStorage.getItem("studentId")
 
 axios
-.get(`http://localhost:5000/gatepass/logs/${id}`)
+.get(`${BASE_URL}/gatepass/logs/${id}`)
 .then(res=>setLogs(res.data))
+.catch(err => console.log("Error fetching logs"))
 
 },[])
 
@@ -23,12 +26,15 @@ return(
 
 <table border="1">
 
+<thead>
 <tr>
 <th>Type</th>
 <th>Date</th>
 <th>Time</th>
 </tr>
+</thead>
 
+<tbody>
 {logs.map(l=>(
 <tr key={l._id}>
 
@@ -38,6 +44,7 @@ return(
 
 </tr>
 ))}
+</tbody>
 
 </table>
 
