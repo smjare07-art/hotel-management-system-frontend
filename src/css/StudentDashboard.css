@@ -1,0 +1,276 @@
+.dashboard {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+/* PROFILE CARD */
+.profileCard {
+  width: 280px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.profileCard img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profileCard h2 {
+  margin-bottom: 10px;
+}
+
+.profileCard p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* ACTION BUTTONS */
+.actions {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 15px;
+}
+
+.actions button {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #4CAF50;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.actions button:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .dashboard{
+    flex-direction: column;
+  }
+
+  .profileCard{
+    width: 100%;
+  }
+}
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+/* 🔹 SIDEBAR */
+.sidebar {
+  width: 220px;
+  background: #1e293b;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar button {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  background: #334155;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.sidebar button:hover {
+  background: #4CAF50;
+}
+
+/* 🔹 MAIN CONTENT */
+.mainContent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* PROFILE CARD */
+.profileCard {
+  width: 300px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.profileCard img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.profileCard p {
+  color: #555;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .layout{
+    flex-direction: column;
+  }
+
+  .sidebar{
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .sidebar button{
+    flex: 1;
+    margin: 5px;
+  }
+}
+.studentTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.studentTable th,
+.studentTable td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.studentTable th {
+  background: #4CAF50;
+  color: white;
+}
+
+.tableImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* STATUS */
+.paid {
+  color: green;
+  font-weight: bold;
+}
+
+.pending {
+  color: red;
+  font-weight: bold;
+}
+
+/* Button */
+.studentTable button {
+  padding: 5px 10px;
+  border: none;
+  background: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.studentTable button:hover {
+  background: #45a049;
+}
+.profileContainer {
+  width: 100%;
+  max-width: 800px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* TOP */
+.profileTop {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profileTop img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* GRID */
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  font-size: 15px;
+}
+
+/* STATUS */
+.paid {
+  color: green;
+  font-weight: bold;
+}
+
+.pending {
+  color: red;
+  font-weight: bold;
+}
+
+/* ACTION */
+.actionBox {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.actionBox button {
+  padding: 12px 20px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.actionBox button:hover {
+  background: #45a049;
+}

@@ -1,0 +1,91 @@
+body{
+  margin:0;
+  font-family: "Poppins", sans-serif;
+}
+
+.login-container{
+  display:flex;
+  height:100vh;
+}
+
+/* LEFT */
+.left{
+  flex:1;
+  background:url("https://images.unsplash.com/photo-1562774053-701939374585")
+  no-repeat center/cover;
+}
+
+.overlay{
+  background:rgba(0,0,0,0.6);
+  color:white;
+  height:100%;
+  padding:50px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.overlay h1{
+  font-size:40px;
+}
+
+/* RIGHT */
+.right{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#f1f5f9;
+}
+
+.login-box{
+  background:white;
+  padding:40px;
+  border-radius:12px;
+  width:320px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.login-box input{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+.login-box button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  background:#2563eb;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.login-box button:hover{
+  background:#1e40af;
+}
+.password-box {
+  position: relative;
+}
+
+.password-box span {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}
+.forgot {
+  margin-top: 10px;
+  color: #3b82f6;
+  cursor: pointer;
+  text-align: right;
+  font-size: 14px;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
