@@ -452,3 +452,96 @@ body {
   background: #111;
   color: white;
 }
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+/* 🔹 FULL LAYOUT COLUMN */
+.dashboard {
+flex-direction: column;
+}
+
+/* 🔹 SIDEBAR TOP NAV */
+.sidebar {
+width: 100%;
+height: auto;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+padding: 10px;
+}
+
+.menu {
+font-size: 12px;
+padding: 8px;
+text-align: center;
+}
+
+/* 🔹 MAIN */
+.main {
+padding: 15px;
+}
+
+/* 🔹 CARDS FULL WIDTH */
+.card-container {
+flex-direction: column;
+gap: 10px;
+}
+
+.card {
+width: 100%;
+}
+
+/* 🔹 CHARTS STACK */
+.chart-container {
+flex-direction: column;
+}
+
+.chartBox {
+width: 100%;
+}
+
+/* 🔹 SEARCH FULL */
+.search {
+width: 100%;
+}
+
+/* 🔹 TABLE SCROLL FIX */
+.table-container {
+overflow-x: auto;
+}
+
+.table {
+min-width: 900px;
+}
+
+/* 🔹 MODAL WIDTH */
+.modalBox {
+width: 90%;
+}
+
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 480px) {
+
+.sidebar {
+flex-direction: column;
+align-items: center;
+}
+
+.menu {
+width: 100%;
+}
+
+.card {
+font-size: 14px;
+padding: 15px;
+}
+
+.chartBox {
+padding: 15px;
+}
+
+}
