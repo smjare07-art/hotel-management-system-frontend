@@ -13,6 +13,8 @@ const navigate = useNavigate()
 
 const handleLogin = async () => {
 
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
+
 // ADMIN LOGIN
 if(email === "admin@gmail.com" && password === "123"){
 navigate("/admin")
@@ -23,7 +25,7 @@ return
 try{
 
 const studentRes = await axios.post(
-"http://localhost:5000/students/login",
+`${BASE_URL}/students/login`,
 {
 username: email,
 password: password
@@ -50,7 +52,7 @@ console.log("Student login failed")
 try{
 
 const secRes = await axios.post(
-"http://localhost:5000/security/login",
+`${BASE_URL}/security/login`,
 {
 email: email,
 password: password
@@ -77,7 +79,7 @@ console.log("Security login failed")
 try{
 
 const messRes = await axios.post(
-"http://localhost:5000/mess/login",
+`${BASE_URL}/mess/login`,
 {
 email: email,
 password: password
@@ -152,9 +154,11 @@ return(
       <button onClick={handleLogin}>
         Login
       </button>
+
 <p className="forgot" onClick={()=>navigate("/forgot-password")}>
   Forgot Password?
 </p>
+
     </div>
 
   </div>
