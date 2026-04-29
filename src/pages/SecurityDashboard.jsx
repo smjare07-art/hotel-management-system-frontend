@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+
 function SecurityDashboard(){
 const navigate = useNavigate()
 
@@ -13,9 +14,11 @@ return(
 <button onClick={()=>navigate("/exit-scanner")}>
 Scan Exit
 </button>
+
 <button onClick={()=>navigate("/entry-scanner")}>
 Scan Entry
 </button>
+
 </div>
 
 )

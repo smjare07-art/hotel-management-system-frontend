@@ -1,11 +1,13 @@
 import { useState } from "react"
 import axios from "axios"
 import Swal from "sweetalert2"
-import "../css/CreateStudent.css"   // same CSS reuse करू शकतो
+import "../css/CreateStudent.css"
 
 function CreateSecurity(){
 
 const [form,setForm] = useState({})
+
+const BASE_URL = "https://hotel-management-system-wwsg.onrender.com"
 
 const handleChange = (e)=>{
 setForm({...form,[e.target.name]:e.target.value})
@@ -34,7 +36,7 @@ Swal.fire({
   }
 })
 
-await axios.post("http://localhost:5000/security/create",form)
+await axios.post(`${BASE_URL}/security/create`,form)
 
 Swal.fire({
   title: "Success 🎉",
