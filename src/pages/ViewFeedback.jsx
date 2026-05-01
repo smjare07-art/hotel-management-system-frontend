@@ -21,7 +21,7 @@ return(
 
 <div className="feedback-container">
 
-<h2>💬 Student Feedback ({feedbacks.length})</h2>
+<h2> Student Feedback ({feedbacks.length})</h2>
 
 {feedbacks.length === 0 ? (
 <p className="empty">No feedback available</p>
